@@ -63,10 +63,8 @@
   <div class="container card">
     <div class="text-center">
       <h3 class="text-center">Cryptocurrency</h3>
-      <p>This system will pull closing price from a coin of your choosing for a pre-determined date.</p>
-      <p>Current Date:
-        <span id="#date">date</span>
-      </p>
+      <p>Pulls current coin price exchange with USD</p>
+
     </div>
 
 
@@ -74,11 +72,11 @@
       <div class="row">
 
         <div class="col-8 text-center">
-          <input type="text" id="crypto" class="form-control" placeholder="Enter coin... ex: BTC"></input>
+          <input type="text" id="coin" class="form-control" placeholder="Enter coin... ex: BTC"></input>
         </div>
 
         <div class="col-4 text-center">
-          <button type="submit" id="submit" class="btn">submit</button>
+          <button type="submit" id="csubmit" class="btn">submit</button>
         </div>
 
       </div>
@@ -86,7 +84,7 @@
       <br>
 
       <div>
-        <p class="jumbotron display-5 text-center" id="check"></p>
+        <p class="jumbotron display-5 text-center" id="cryptoPriceOutput"></p>
       </div>
 
     </div>

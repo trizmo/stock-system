@@ -1,14 +1,12 @@
+//NASDAQ function
+
 //CREATING THE URL
 var api = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=";
 var stock = "input";
 var apiKey = "&apikey=N06BDYLYWYZK0MA6"; //PRIVATE KEY
 
-
 $(document).ready(function () {
-  $("#date").text("2018-08-24");
-
-
-  $("#submit").click(function () {
+$("#submit").click(function () {
     var stock = $("#stock").val();
     if (stock != "") {
       $.ajax({
@@ -23,10 +21,32 @@ $(document).ready(function () {
       });
     }
   });
+});
 
+// crypto function
 
+// creating the URL
+var cryptoApi = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=";
+var coin = "input";
+var toUSD = "&to_currency=USD";
+var apiKey = "&apikey=N06BDYLYWYZK0MA6"; //PRIVATE KEY
 
-
+$(document).ready(function () {
+  $("#csubmit").click(function () {
+    var coin = $("#coin").val();
+    if (coin != "") {
+      $.ajax({
+        type: "GET",
+        url: cryptoApi + coin + toUSD + apiKey,
+        success: function (data) {
+          let close = data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]; //location of current exchange rate
+          // console.log(close);
+          $("#cryptoPriceOutput").html(close); //output to html
+          $("#cryptoPriceOutput").prepend(coin.toUpperCase() + ": $"); //adds crypto name
+        }
+      });
+    }
+  });
 });
 
 
@@ -34,5 +54,7 @@ $(document).ready(function () {
 
 
 
-// DEMO api
+
+
+// NOTES: DEMO api
 // https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo
