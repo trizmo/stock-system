@@ -16,6 +16,7 @@ $(document).ready(function () {
         url: api + stock + apiKey,
         success: function (data) {
           let close = data["Time Series (Daily)"]["2018-08-24"]["4. close"]; //location of closing price (need to figure out how to automatically get last price)
+          console.log();
           $("#check").html(close); //output to html
           $("#check").prepend(stock.toUpperCase() + ": $"); //adds stock name
         }
@@ -27,6 +28,8 @@ $(document).ready(function () {
 
 
 });
+
+
 
 
 

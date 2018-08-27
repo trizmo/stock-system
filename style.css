@@ -1,0 +1,36 @@
+body {
+  background-color: #003459;
+}
+
+.head {
+  border-bottom: 6px #D56062 solid;
+  margin-bottom: 15px;
+  background-color: #E8E8E8;
+}
+
+.gfont1 {
+  font-family: 'Quicksand', sans-serif;
+  color: #00487C;
+
+}
+.gfont2 {
+  font-family: 'Lobster', cursive;
+  color: #00487C;
+
+}
+.gfont3 {
+  font-family: 'Cinzel', serif;
+  color: #00487C;
+
+}
+.gfont4 {
+  font-family: 'Old Standard TT', serif;
+  color: #00487C;
+}
+
+.card {
+  margin-bottom: 15px;
+}
+
+
+
