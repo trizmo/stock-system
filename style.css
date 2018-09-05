@@ -2,6 +2,13 @@ body {
   background-color: #003459;
 }
 
+.centered {
+  float: middle;
+  clear:both;
+  margin:auto;
+
+}
+
 .head {
   border-bottom: 6px #D56062 solid;
   margin-bottom: 15px;
