@@ -39,7 +39,7 @@ $(document).ready(function () {
     var stock = $("#stock").val();
     if (stock != "") {
       console.log("Stock selected: " + stock);
-      console.log("ajax Callling: " + api + stock + apiKey) ;
+      console.log("ajax Callling: " + api + stock + apiKey);
       $.ajax({
         type: "GET",
         // url: api + stock + apiKey,
@@ -48,7 +48,7 @@ $(document).ready(function () {
           console.log(stock.toUpperCase());
           // let close = data['Time Series (Daily)'] + [fullDate] + ['4. close']; //location of closing price (need to figure out how to automatically get last price)
           let close = data[stock.toUpperCase()]["quote"]["close"];
-          
+
           console.log(close);
           // console.log("Today's date is: " + fullDate);
 
@@ -90,15 +90,25 @@ $(document).ready(function () {
 // Watchlist function
 // an array of objects containing data from coins or stocks that will be displayed
 
-// var watchlist1 = [{xrp:data{
-//   name : data["Realtime Currency Exchange Rate"]["2. From_Currency Name"]
-//   price : data["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
 
-// }}];
 
-// $(document).ready(function() {
-//   $
-// })
+$(document).ready(function () {
+  var watchlist = ["DBX", "SNDX", "MSFT", "TSLA"];
+  for (i = 0; i < watchlist.length; i++) {
+    console.log("ajax Callling: " + api + watchlist[i] + apiKey);
+    $.ajax({
+      type: "GET",
+      // url: api + stock + apiKey,
+      url: api + watchlist[i] + apiKey,
+      success: function (data) {
+        console.log("connect OK");
+        console.log("i = : " + i);
+        $("#watching").append("<li>" + watchlist[i] + "</li>");
+        $("#priceWatch").append("<li>" + data[watchlist[i]]["quote"]["close"] + "</li>");
+      }
+    })
+  }
+});
 
 
 
