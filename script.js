@@ -5,7 +5,7 @@
 //CREATING THE URL
 var api = "https://api.iextrading.com/1.0/stock/market/batch?symbols=";
 var stock = "input";
-var apiKey = ",fb&types=quote,news,chart&range=1m&last=5";
+var apiKey = "&types=quote,news,chart&range=1m&last=5";
 // var apiKey = "&apikey=N06BDYLYWYZK0MA6"; //PRIVATE KEY
 
 
@@ -35,8 +35,8 @@ var objDate = "[" + '"' + fullDate + '"' + "]";
 
 // calling stock price function
 $(document).ready(function () {
-  $("#submit").click(function () {
-    var stock = $("#stock").val();
+  $("#stockInput").keyup(function (e) {
+    var stock = $("#stockInput").val();
     if (stock != "") {
       console.log("Stock selected: " + stock);
       console.log("ajax Callling: " + api + stock + apiKey);
@@ -47,7 +47,7 @@ $(document).ready(function () {
         success: function (data) {
           console.log(stock.toUpperCase());
           // let close = data['Time Series (Daily)'] + [fullDate] + ['4. close']; //location of closing price (need to figure out how to automatically get last price)
-          let close = data[stock.toUpperCase()]["quote"]["close"];
+          let close = data[stock.toUpperCase()]["quote"]["latestPrice"];
 
           console.log(close);
           // console.log("Today's date is: " + fullDate);
@@ -90,25 +90,49 @@ $(document).ready(function () {
 // Watchlist function
 // an array of objects containing data from coins or stocks that will be displayed
 
+// var watchlist = ["dbx", "msft", "sndx", "tsla"];
+// var index = [];
 
 
-$(document).ready(function () {
-  var watchlist = ["DBX", "SNDX", "MSFT", "TSLA"];
-  for (i = 0; i < watchlist.length; i++) {
-    console.log("ajax Callling: " + api + watchlist[i] + apiKey);
-    $.ajax({
-      type: "GET",
-      // url: api + stock + apiKey,
-      url: api + watchlist[i] + apiKey,
-      success: function (data) {
-        console.log("connect OK");
-        console.log("i = : " + i);
-        $("#watching").append("<li>" + watchlist[i] + "</li>");
-        $("#priceWatch").append("<li>" + data[watchlist[i]]["quote"]["close"] + "</li>");
-      }
-    })
-  }
-});
+// function pushData() {
+//   var inputData = document.getElementById("watchInput").value;
+//   if (inputData !== "") {
+//     watchlist.push(inputData);
+//   }
+//   for (i = 0; i < watchlist.length; i++) {
+//     document.getElementById("watchList").innerHTML = "<li>" + watchlist[i] + "</li>";
+//   }
+//   console.log(watchlist);
+// }
+
+
+
+
+
+// $(document).ready(function () {
+//   for (i = 0; i < watchlist.length; i++) {
+//     var listKey = api + watchlist[0] + apiKey;
+//     console.log
+//     $.ajax({
+//       type: "GET",
+//       // url: api + stock + apiKey,
+//       url: listKey,
+//       success: function (data) {
+//         console.log("ajax Called: " + api + watchlist[0] + apiKey);
+//         console.log("connect successful");
+//         index.push(data);
+//         console.log(index[0]['dbx']);
+//         // console.log("displaying index value: " + index["dbx"]["quote"]["latestprice"]);
+//         // console.log("watchlist i = " + watchlist[i]);
+//         // $("#priceWatch").append("<li>" + "$ " + data[watchlist[i]]["quote"]["close"] + "</li>");
+//         // if(data[watchlist[i]]["quote"]["close"] == $){}
+//       }
+//     })
+//     console.log("i = : " + watchlist[i]);
+//     $("#number").append("<li>" + (i + 1) + "</li>");
+//     $("#watching").append("<li>" + watchlist[i].toUpperCase() + "</li>");
+// }
+// });
 
 
 
