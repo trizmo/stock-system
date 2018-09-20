@@ -1,18 +1,20 @@
 console.log("watchlist-script is RUNNING");
 
-var watchlist = ["dbx", "msft", "sndx", "tsla"];    // initiating watchlist array (will later be objects)
-var index = [];   // initiating index extra array to push
+var watchlist = [];
+var index = [];
+var gotData;
 
-// creating the API link for stocks info getting
+
 var api = "https://api.iextrading.com/1.0/stock/market/batch?symbols=";
 var stock = "input";
 var apiKey = "&types=quote,news,chart&range=1m&last=5";
-url = "https://api.iextrading.com/1.0/stock/market/batch?symbols=fb&types=quote,news,chart&range=1m&last=5";
+var urlkeyz = "https://api.iextrading.com/1.0/stock/market/batch?symbols=fb&types=quote,news,chart&range=1m&last=5";
 
 
 $(document).ready(function () {
-  for (i = 0; i < watchlist.length; i++) {
+  for (let i = 0; i < watchlist.length; i++) {
     $("#symbol").append("<p>" + watchlist[i] + "</p>")
+    $("#stockNo").append("<p>" + (i + 1) + "</p>")
   }
 
 
@@ -25,42 +27,41 @@ $(document).ready(function () {
 
     } else {
       watchlist.push(inputData.toUpperCase());
-      $("#symbol").append("<p>" + watchlist[i] + "</p>")
+      for (let i = 0; i < watchlist.length; i++) {
+        $("#symbol").html("<p>" + watchlist[i] + "</p>")
+        $("#stockNo").html("<p>" + (i + 1) + "</p>")
+      }
     }
+  })
 
+  $("#get-data").on("click", function () {
+    var watchstring = watchlist.toString();
+    $.ajax({
+      type: "GET",
+      url: api + watchstring + apiKey,
+      success: function (data) {
+        console.log("call successful");
+        gotData = data;
+        console.log(gotData);
+      }
+    });
   })
 
   $("#refresh").on("click", function () {
-    console.log("refresh running");
-    for (i = 0; i < watchlist[i]; i++) {
-      console.log("refresh loop: " + watchlist[i])
-      $.ajax({
-        type: "GET",
-        // url: api + stock + apiKey,
-        url: api + watchlist[i] + apiKey,
-        success: function (data) {
-          console.log("call successful: " + watchlist[i].toUpperCase());
-          // let close = data['Time Series (Daily)'] + [fullDate] + ['4. close']; //location of closing price (need to figure out how to automatically get last price)
-          let close = data[watchlist[i].toUpperCase()]["quote"]["latestPrice"];
-
-          console.log(close);
-          // console.log("Today's date is: " + fullDate);
-
-          $("#price").html(close); //output to html
-          $("#price").prepend(watchlist[i].toUpperCase() + ": $"); //adds stock name
-        }
-      });
-
+    console.log("refresh clicked");
+    for (let key in gotData) {
+      console.log("SUCCESS" + gotData[key]);
+      index.push(gotData[key].quote.latestPrice)
+      console.log(index);
+    }
+    for (let i = 0; i < index.length; i++) {
+      $("#price").html("<p>" + "$" + index[i] + "</p>")
 
     }
-
-
-
-
-
-
-
   })
+
+
+
 
 
 })  // end of document ready function

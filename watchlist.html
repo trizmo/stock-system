@@ -3,7 +3,7 @@
 
 <head>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="watchlist-script.js"></script>
+  <script src="watchlist-script2.js"></script>
   <link href="style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Cinzel|Lobster|Old+Standard+TT|Quicksand" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -30,42 +30,64 @@
 
   <div class="container card">
     <h3 class="text-center">Watchlist</h3>
-    <p class="text-center">a array of objects containing stock or coin data</p>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Symbol</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-
-            <div id="stockNo"></div>
-            <div id="symbol"></div>
-            <div id="price"></div>
+    <h4></h4>
 
 
+    <div class="container row">
 
-          </table>
-
-          <input id="watchInput" type="text" placeholder="Enter Stock...">
-          <button id="watchInputSubmit" type="submit" class="btn-primary">Submit</button>
-
-          <br> <br>
-          <button id="refresh" type="submit" class="btn-primary">refresh</button>
+      <div class="col-md-8">
+        <div class="" id="cardDisp">
 
 
         </div>
+
       </div>
+
+      <div class="col-md-4">
+<div>
+
+  <p>Enter stock (Ex. 'fb') and hit submit. Then click "Get Data" and "Refresh Cards".</p>
+
+</div>
+
+        <div>
+          <input id="watchInput" type="text" placeholder="Enter Stock...">
+          <button id="watchInputSubmit" type="submit" class="btn-primary">Submit</button>
+        </div>
+
+
+        <br> <br>
+        <button id="get-data" type="submit" class="btn btn-primary">Get Data</button>
+        <button id="refresh" type="submit" class="btn btn-primary">Refresh Cards</button>
+
+
+      </div>
+
     </div>
 
 
+
+
+
+
   </div>
-<div id="dataFeed"></div>
+
+
+
+  <!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title" id="symbol">Card title</h5>
+      <h6 class="card-subtitle mb-2 text-muted" id="price">  Card subtitle</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div> -->
+
+
+
+
+  <div id="dataFeed"></div>
 
 
 </body>
