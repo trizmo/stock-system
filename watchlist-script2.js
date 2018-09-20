@@ -3,7 +3,10 @@ $(document).ready(function () {
   var news = [];
   var latestPrices = [];
   var company = [];
+  var fiveTwoWeekLow = [];
+  var fiveTwoWeekHigh = [];
   var gotData;
+  var allSymbols;
   var watchlist = ["MSFT", "TSLA"];
   var watchstring = watchlist.toString();
 
@@ -13,6 +16,19 @@ $(document).ready(function () {
   var urlkeyz = "https://api.iextrading.com/1.0/stock/market/batch?symbols=fb&types=quote,news,chart&range=1m&last=5";
 
   // GETTING DATA
+  function allSymbols() {
+    $.ajax({
+      type: "GET",
+      url: "https://api.iextrading.com/1.0/ref-data/symbols",
+      success: function (data) {
+        console.log("all symbols call successful");
+        allSymbols = data;
+        console.log("testing all symbol data: " + allSymbols["8148"].symbol)
+      }
+    });
+  }
+
+
   function getData() {
     watchstring = watchlist.toString();
     console.log("getting data, watchstring: " + watchstring)
@@ -20,7 +36,7 @@ $(document).ready(function () {
       type: "GET",
       url: api + watchstring + apiKey,
       success: function (data) {
-        console.log("call successful");
+        console.log("watchlist call successful");
         gotData = data;
         console.log(gotData);
       }
@@ -28,36 +44,74 @@ $(document).ready(function () {
 
   }
 
+  function biggestGainers() {
+    $.ajax({
+      type: "GET",
+      url: "https://api.iextrading.com/1.0/stock/market/list/gainers",
+      success: function (data) {
+        console.log("biggest gainers call successful");
+        var gotDataBiggestGainers = data;
+        for (i = 0; i < 10; i++) {
+          $("#bigGains").append("<p>" + gotDataBiggestGainers[i].symbol + "  $" + gotDataBiggestGainers[i].latestPrice + "</p>");
+        }
+      }
+    });
+  }
 
+  function biggestLosers() {
+    $.ajax({
+      type: "GET",
+      url: "https://api.iextrading.com/1.0/stock/market/list/losers",
+      success: function (data) {
+        console.log("biggest losers call successful");
+        var gotDataBiggestLosers = data;
+        for (i = 0; i < gotDataBiggestLosers.length; i++) {
+          $("#bigLose").append("<p>" + gotDataBiggestLosers[i].symbol + "  $" + gotDataBiggestLosers[i].latestPrice + "</p>");
+        }
+      }
+    });
+  }
+
+
+  function checker() {
+    for(var key in allSymbols){
+      console.log("testing checker: " + allSymbols[key])
+
+    }
+  }
+
+
+
+
+  // creating cards
   function createCard() {
-    console.log("data for createCard: " + gotData);
     news = [];
     latestPrices = [];
     company = [];
 
     for (var key in gotData) {
-      console.log("SUCCESS" + gotData[key]);
       latestPrices.push(gotData[key].quote.latestPrice)
       company.push(gotData[key].quote.companyName)
       news.push(gotData[key].news[0].headline)
-      console.log(gotData[key].news[0].headline)
-      // fiveTwoWeekLow.push(gotData[key].quote.latestPrice)
-      console.log(latestPrices);
+      fiveTwoWeekLow.push(gotData[key].quote.week52Low)
+      fiveTwoWeekHigh.push(gotData[key].quote.week52High)
     }
 
     for (i = 0; i < watchlist.length; i++) {
-      $("#cardDisp").append($("<div/>", { "class": "card", "style": "width: 30rem" }).append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: "$ "+latestPrices[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: company[i] }))))).append($("<p/>", { "class": "card-text",text: "Some quick example text to build on the card title and make up the bulk of the card's content." })).append($("<a/>", { "href": "#", "class": "card-link", text: news[i] })))
+      $("#cardDisp").append($("<div/>", { "class": "card", "style": "width: 25rem" }).append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: "$ " + latestPrices[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: company[i] }))))).append($("<p/>", { "class": "card-text", text: "52 Week Low: $" + fiveTwoWeekLow[i]}).append($("<p/>", { "class": "card-text", text: "52 Week High: $" + fiveTwoWeekHigh[i]}))).append($("<a/>", { "href": "#", "class": "card-link", text: news[i] })))
     }
 
   }
 
 
+  // adding to watchlist
   $("#watchInputSubmit").on("click", function () {
     var inputData = $("#watchInput").val();
-    if (watchlist.includes(inputData) || inputData === "") {
+    inputDataUC = inputData.toUpperCase();
+    console.log("inputdata is: " + inputDataUC);
+    if (watchlist.includes(inputDataUC) || inputDataUC === "") {
       console.log("error: inputData already exists or is empty");
     } else {
-      inputDataUC = inputData.toUpperCase();
       watchlist.push(inputDataUC);
       console.log(watchlist);
       console.log("getting data");
@@ -69,29 +123,15 @@ $(document).ready(function () {
     }
   });
 
-  // $("#get-data").on("click", function () {
-  //   console.log("getting data");
-  //   getData();
-  //   $("#cardDisp").html("");
-  //   setTimeout(function () {
-  //     createCard()
-  //   }, 1000 * 1);
-  // })
-
-  // $("#refresh").on("click", function () {
-  //   console.log("refreshed, watchstring: " + watchstring);
-  //   console.log("refresh clicked");
-  //   $("#cardDisp").html("");
-  //   setTimeout(function () {
-  //     createCard()
-  //   }, 1000 * 1);
-  // })
-
-
+  //starting app on doc ready
+  checker()
+  allSymbols()
   getData()
   setTimeout(function () {
     createCard()
   }, 1000 * 1);
+  biggestGainers()
+  biggestLosers()
 
 
 })

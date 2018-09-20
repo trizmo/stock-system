@@ -36,7 +36,18 @@ body {
 }
 
 .card {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 5px
+}
+
+.bigGains {
+  border-top: solid black 3px;
+  margin-top: 5px;
+}
+
+.bigLose {
+  border-top: solid black 3px;
+  margin-top: 5px
 }
 
 
