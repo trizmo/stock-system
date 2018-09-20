@@ -46,7 +46,7 @@ $(document).ready(function () {
     }
 
     for (i = 0; i < watchlist.length; i++) {
-      $("#cardDisp").append($("<div/>", { "class": "card", "style": "width: 30rem" }).append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: latestPrices[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: company[i] }))))).append($("<p/>", { "class": "card-text",text: "Some quick example text to build on the card title and make up the bulk of the card's content." })).append($("<a/>", { "href": "#", "class": "card-link", text: news[i] })))
+      $("#cardDisp").append($("<div/>", { "class": "card", "style": "width: 30rem" }).append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: "$ "+latestPrices[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: company[i] }))))).append($("<p/>", { "class": "card-text",text: "Some quick example text to build on the card title and make up the bulk of the card's content." })).append($("<a/>", { "href": "#", "class": "card-link", text: news[i] })))
     }
 
   }
@@ -60,32 +60,32 @@ $(document).ready(function () {
       inputDataUC = inputData.toUpperCase();
       watchlist.push(inputDataUC);
       console.log(watchlist);
-      console.log("getting data");
-      getData();
-      $("#cardDisp").html("");
-      setTimeout(function () {
-        createCard()
-      }, 1000 * 1);
+      // console.log("getting data");
+      // getData();
+      // $("#cardDisp").html("");
+      // setTimeout(function () {
+      //   createCard()
+      // }, 1000 * 1);
     }
   });
 
-  // $("#get-data").on("click", function () {
-  //   console.log("getting data");
-  //   getData();
-  //   $("#cardDisp").html("");
-  //   setTimeout(function () {
-  //     createCard()
-  //   }, 1000 * 1);
-  // })
+  $("#get-data").on("click", function () {
+    console.log("getting data");
+    getData();
+    $("#cardDisp").html("");
+    setTimeout(function () {
+      createCard()
+    }, 1000 * 1);
+  })
 
-  // $("#refresh").on("click", function () {
-  //   console.log("refreshed, watchstring: " + watchstring);
-  //   console.log("refresh clicked");
-  //   $("#cardDisp").html("");
-  //   setTimeout(function () {
-  //     createCard()
-  //   }, 1000 * 1);
-  // })
+  $("#refresh").on("click", function () {
+    console.log("refreshed, watchstring: " + watchstring);
+    console.log("refresh clicked");
+    $("#cardDisp").html("");
+    setTimeout(function () {
+      createCard()
+    }, 1000 * 1);
+  })
 
 
   getData()
