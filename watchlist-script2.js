@@ -73,9 +73,9 @@ $(document).ready(function () {
     console.log("getting data");
     getData();
     $("#cardDisp").html("");
-    setTimeout(function () {
-      createCard()
-    }, 1000 * 1);
+    // setTimeout(function () {
+    //   createCard()
+    // }, 1000 * 1);
   })
 
   $("#refresh").on("click", function () {
