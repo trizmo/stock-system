@@ -60,22 +60,32 @@ $(document).ready(function () {
       inputDataUC = inputData.toUpperCase();
       watchlist.push(inputDataUC);
       console.log(watchlist);
+      console.log("getting data");
+      getData();
+      $("#cardDisp").html("");
+      setTimeout(function () {
+        createCard()
+      }, 1000 * 1);
     }
   });
 
-  $("#get-data").on("click", function () {
-    console.log("getting data");
-    getData();
-  })
+  // $("#get-data").on("click", function () {
+  //   console.log("getting data");
+  //   getData();
+  //   $("#cardDisp").html("");
+  //   setTimeout(function () {
+  //     createCard()
+  //   }, 1000 * 1);
+  // })
 
-  $("#refresh").on("click", function () {
-    console.log("refreshed, watchstring: " + watchstring);
-    console.log("refresh clicked");
-    $("#cardDisp").html("");
-    setTimeout(function () {
-      createCard()
-    }, 1000 * 1);
-  })
+  // $("#refresh").on("click", function () {
+  //   console.log("refreshed, watchstring: " + watchstring);
+  //   console.log("refresh clicked");
+  //   $("#cardDisp").html("");
+  //   setTimeout(function () {
+  //     createCard()
+  //   }, 1000 * 1);
+  // })
 
 
   getData()
