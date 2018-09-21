@@ -30,6 +30,7 @@ $(document).ready(function () {
 
 
   function getData() {
+    $(".loader").show();
     watchstring = watchlist.toString();
     console.log("getting data, watchstring: " + watchstring)
     $.ajax({
@@ -93,6 +94,7 @@ $(document).ready(function () {
   // creating cards
   function createCard() {
     valueRESET()
+    $(".loader").hide();
 
     for (var key in gotData) {
       latestPrices.push(gotData[key].quote.latestPrice)
