@@ -5,6 +5,8 @@ $(document).ready(function () {
   var company = [];
   var fiveTwoWeekLow = [];
   var fiveTwoWeekHigh = [];
+  var changePercent = [];
+  var targetPricing = [];
   var gotData;
   var allSymbols;
   var watchlist = ["MSFT", "TSLA"];
@@ -87,6 +89,7 @@ $(document).ready(function () {
     company = [];
     fiveTwoWeekLow = [];
     fiveTwoWeekHigh = [];
+    changePercent = [];
 
   }
 
@@ -102,12 +105,27 @@ $(document).ready(function () {
       news.push(gotData[key].news[0])
       fiveTwoWeekLow.push(gotData[key].quote.week52Low)
       fiveTwoWeekHigh.push(gotData[key].quote.week52High)
+      changePercent.push(gotData[key].quote.changePercent)
+
     }
-    console.log(news);
+   
 
     for (i = 0; i < watchlist.length; i++) {
-      $("#cardDisp").append($("<div/>", { "class": "card", "style": "width: 25rem" }).append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: "$ " + latestPrices[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: company[i] }))))).append($("<p/>", { "class": "card-text", text: "52 Week Low: $" + fiveTwoWeekLow[i] }).append($("<p/>", { "class": "card-text", text: "52 Week High: $" + fiveTwoWeekHigh[i] }))).append($("<a/>", { "href": news[i].url, "class": "card-link", text: news[i].headline })))
+      // creating card details
+      $("#cardDisp").append($("<div/>", { "class": "card", "style": "width: 100%" }).append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: "$ " + latestPrices[i] }).append($("<h6/>", { "class": "card-subtitle mb-2", "id": "price", text: company[i] })).append($("<p/>", { "class": "card-text", text: "Target Price Alert: "}).append($("<input/>", { "class": "card-text","id": "targetPriceInput"})))))).append($("<p/>", { "class": "card-text", text: "52 Week Low: $" + fiveTwoWeekLow[i] }).append($("<p/>", { "class": "card-text", text: "52 Week High: $" + fiveTwoWeekHigh[i] }))).append($("<p/>", { "class": "card-text", text: "Percentage Change: " + (changePercent[i] * 100 + " %") }).append($("<p/>", { "class": "card-text", text: "52 Week High: $" + fiveTwoWeekHigh[i] }))).append($("<a/>", { "href": news[i].url,"target": "_blank" , "class": "card-link", text: news[i].headline })))
     }
+
+  }
+
+  function captureTargetPrice(){
+    $("#targetPriceInput").keyup(function (e) {
+      if(e.keyCode === 13){
+        var value = $("#targetPriceInput").val()
+        targetPricing.push(value);
+        console.log(targetPricing);
+
+      }
+    })
 
   }
 
@@ -140,6 +158,7 @@ $(document).ready(function () {
   }, 1000 * 1);
   biggestGainers()
   biggestLosers()
+  captureTargetPrice()
 
 
 })

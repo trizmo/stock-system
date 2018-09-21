@@ -2,6 +2,10 @@ body {
   background-color: #003459;
 }
 
+a {
+  text-decoration: none;
+}
+
 .centered {
   float: middle;
   clear:both;
@@ -35,19 +39,41 @@ body {
   color: #00487C;
 }
 
+.quickQuote {
+  background-color: lightgray;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px;
+  margin: 10px 0px 10px 0px
+
+}
+
+.miscData {
+  background-color: lightgray;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px;
+  margin: 10px 0px 10px 0px
+
+}
+
 .card {
   margin-bottom: 10px;
   box-shadow: 1px 1px 5px
 }
 
+#cardDisp {
+  margin-top: 10px;
+}
+
 .bigGains {
   border-top: solid black 3px;
   margin-top: 5px;
+  
 }
 
 .bigLose {
   border-top: solid black 3px;
-  margin-top: 5px
+  margin-top: 5px;
+  
 }
 
 .loader {

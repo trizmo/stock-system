@@ -13,14 +13,19 @@
 
 </head>
 
-<body style="background-color: #3E6680">
+<body>
+
+  <div class="ticker">
+
+
+  </div>
 
   <!--OLD NAV BAR-->
 
   <div class="container-fluid text-center head">
     <div class="container row centered">
       <div class="col-12">
-        <h1 class="gfont2">Market Systems 2.0</h1>
+        <h1 class="gfont2" href="index.html">Market Systems 2.0</h1>
         <div>
           <a href="watchlist.html">WATCHLIST</a>
         </div>
@@ -35,36 +40,71 @@
   </nav> -->
 
 
+  <!-- Quick Quote -->
 
+  <div class="container quickQuote">
+    <h2 class="text-center">Quick Quote</h2>
 
-  <!-- NASDAQ MARKET -->
+    <div class="row">
+      <!-- NASDAQ MARKET -->
+      <div class="container col-md-6">
 
-  <div class="container card">
-
-    <div class="text-center">
-      <h3 class="text-center">NASDAQ</h3>
-      <p>Pulls current stock closing price</p>
-    </div>
-
-
-    <div class="container " style="margin-top:2em">
-      <div class="row">
-
-        <div class="col-8 text-center">
-          <input type="text" id="stockInput" class="form-control" placeholder="Enter NASDAQ Stock... ex: MSFT">
+        <div class="text-center">
+          <h3 class="text-center">Stock Market</h3>
+          <p>Pulls current stock closing price</p>
         </div>
 
-        <div class="col-4 text-center">
-          <button type="submit" id="submit" class="btn">submit</button>
+
+        <div class="container">
+          <div class="row">
+
+            <div class="col-12 text-center">
+              <input type="text" id="stockInput" class="form-control" placeholder="Enter Stock... ex: MSFT">
+            </div>
+
+          </div>
+
+          <br>
+
+          <div>
+            <p class="jumbotron display-5 text-center" id="check"></p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Crypto MARKET -->
+      <div class="container col-md-6">
+        <div class="text-center">
+          <h3 class="text-center">Cryptocurrency</h3>
+          <p>Pulls current coin price exchange with USD</p>
+
         </div>
 
+
+        <div class="container">
+          <div class="row">
+
+            <div class="col-8 text-center">
+              <input type="text" id="coin" class="form-control" placeholder="Enter coin... ex: BTC">
+            </div>
+
+            <div class="col-4 text-center">
+              <button type="submit" id="csubmit" class="btn">submit</button>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div>
+            <p class="jumbotron display-5 text-center" id="cryptoPriceOutput"></p>
+          </div>
+
+        </div>
       </div>
 
-      <br>
 
-      <div>
-        <p class="jumbotron display-5 text-center" id="check"></p>
-      </div>
 
     </div>
   </div>
@@ -72,39 +112,44 @@
 
 
 
-  <!-- Crypto MARKET -->
-  <div class="container card">
-    <div class="text-center">
-      <h3 class="text-center">Cryptocurrency</h3>
-      <p>Pulls current coin price exchange with USD</p>
 
-    </div>
+  <!--- MISC DATA --->
+  <div class="container miscData">
 
+    <div class="container row">
+      <div class="container col-md-6">
+        <div class="bigGains">
 
-    <div class="container " style="margin-top:2em">
-      <div class="row">
+          <h5>Biggest Gainers</h5>
+          <p id="bigGains">
+            <p>
 
-        <div class="col-8 text-center">
-          <input type="text" id="coin" class="form-control" placeholder="Enter coin... ex: BTC">
-        </div>
-
-        <div class="col-4 text-center">
-          <button type="submit" id="csubmit" class="btn">submit</button>
         </div>
 
       </div>
 
-      <br>
+      <div class="container col-md-6">
+        <div class="bigLose">
 
-      <div>
-        <p class="jumbotron display-5 text-center" id="cryptoPriceOutput"></p>
+          <h5>Biggest Losers</h5>
+          <p id="bigLose">
+            <p>
+
+        </div>
+
       </div>
 
+
     </div>
+
+
   </div>
 
 
-  <!--WATCH LIST-->
+
+
+
+
 
 
 
@@ -133,8 +178,3 @@
 </body>
 
 </html>
-
-
-
-
-

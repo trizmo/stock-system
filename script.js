@@ -36,27 +36,30 @@ var objDate = "[" + '"' + fullDate + '"' + "]";
 // calling stock price function
 $(document).ready(function () {
   $("#stockInput").keyup(function (e) {
-    var stock = $("#stockInput").val();
-    if (stock != "") {
-      console.log("Stock selected: " + stock);
-      console.log("ajax Callling: " + api + stock + apiKey);
-      $.ajax({
-        type: "GET",
-        // url: api + stock + apiKey,
-        url: api + stock + apiKey,
-        success: function (data) {
-          console.log(stock.toUpperCase());
-          // let close = data['Time Series (Daily)'] + [fullDate] + ['4. close']; //location of closing price (need to figure out how to automatically get last price)
-          let close = data[stock.toUpperCase()]["quote"]["latestPrice"];
+    if (e.keyCode === 13) {
+      var stock = $("#stockInput").val();
+        console.log("Stock selected: " + stock);
+        console.log("ajax Callling: " + api + stock + apiKey);
+        $.ajax({
+          type: "GET",
+          // url: api + stock + apiKey,
+          url: api + stock + apiKey,
+          success: function (data) {
+            console.log(stock.toUpperCase());
+            // let close = data['Time Series (Daily)'] + [fullDate] + ['4. close']; //location of closing price (need to figure out how to automatically get last price)
+            let close = data[stock.toUpperCase()]["quote"]["latestPrice"];
 
-          console.log(close);
-          // console.log("Today's date is: " + fullDate);
+            console.log(close);
+            // console.log("Today's date is: " + fullDate);
 
-          $("#check").html(close); //output to html
-          $("#check").prepend(stock.toUpperCase() + ": $"); //adds stock name
-        }
-      });
+            $("#check").html(close); //output to html
+            $("#check").prepend(stock.toUpperCase() + ": $"); //adds stock name
+          }
+        });
+      
     }
+
+
   });
 });
 
@@ -87,57 +90,38 @@ $(document).ready(function () {
   });
 });
 
-// Watchlist function
-// an array of objects containing data from coins or stocks that will be displayed
 
-// var watchlist = ["dbx", "msft", "sndx", "tsla"];
-// var index = [];
+//misc data
+function biggestGainers() {
+  $.ajax({
+    type: "GET",
+    url: "https://api.iextrading.com/1.0/stock/market/list/gainers",
+    success: function (data) {
+      console.log("biggest gainers call successful");
+      var gotDataBiggestGainers = data;
+      for (i = 0; i < 10; i++) {
+        $("#bigGains").append("<p>" + gotDataBiggestGainers[i].symbol + "  $" + gotDataBiggestGainers[i].latestPrice + "</p>");
+      }
+    }
+  });
+}
 
+function biggestLosers() {
+  $.ajax({
+    type: "GET",
+    url: "https://api.iextrading.com/1.0/stock/market/list/losers",
+    success: function (data) {
+      console.log("biggest losers call successful");
+      var gotDataBiggestLosers = data;
+      for (i = 0; i < gotDataBiggestLosers.length; i++) {
+        $("#bigLose").append("<p>" + gotDataBiggestLosers[i].symbol + "  $" + gotDataBiggestLosers[i].latestPrice + "</p>");
+      }
+    }
+  });
+}
 
-// function pushData() {
-//   var inputData = document.getElementById("watchInput").value;
-//   if (inputData !== "") {
-//     watchlist.push(inputData);
-//   }
-//   for (i = 0; i < watchlist.length; i++) {
-//     document.getElementById("watchList").innerHTML = "<li>" + watchlist[i] + "</li>";
-//   }
-//   console.log(watchlist);
-// }
-
-
-
-
-
-// $(document).ready(function () {
-//   for (i = 0; i < watchlist.length; i++) {
-//     var listKey = api + watchlist[0] + apiKey;
-//     console.log
-//     $.ajax({
-//       type: "GET",
-//       // url: api + stock + apiKey,
-//       url: listKey,
-//       success: function (data) {
-//         console.log("ajax Called: " + api + watchlist[0] + apiKey);
-//         console.log("connect successful");
-//         index.push(data);
-//         console.log(index[0]['dbx']);
-//         // console.log("displaying index value: " + index["dbx"]["quote"]["latestprice"]);
-//         // console.log("watchlist i = " + watchlist[i]);
-//         // $("#priceWatch").append("<li>" + "$ " + data[watchlist[i]]["quote"]["close"] + "</li>");
-//         // if(data[watchlist[i]]["quote"]["close"] == $){}
-//       }
-//     })
-//     console.log("i = : " + watchlist[i]);
-//     $("#number").append("<li>" + (i + 1) + "</li>");
-//     $("#watching").append("<li>" + watchlist[i].toUpperCase() + "</li>");
-// }
-// });
-
-
-
-
-
+biggestGainers()
+biggestLosers()
 
 
 // NOTES: DEMO api
