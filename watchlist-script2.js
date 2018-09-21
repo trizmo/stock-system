@@ -99,13 +99,14 @@ $(document).ready(function () {
     for (var key in gotData) {
       latestPrices.push(gotData[key].quote.latestPrice)
       company.push(gotData[key].quote.companyName)
-      news.push(gotData[key].news[0].headline)
+      news.push(gotData[key].news[0])
       fiveTwoWeekLow.push(gotData[key].quote.week52Low)
       fiveTwoWeekHigh.push(gotData[key].quote.week52High)
     }
+    console.log(news);
 
     for (i = 0; i < watchlist.length; i++) {
-      $("#cardDisp").append($("<div/>", { "class": "card", "style": "width: 25rem" }).append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: "$ " + latestPrices[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: company[i] }))))).append($("<p/>", { "class": "card-text", text: "52 Week Low: $" + fiveTwoWeekLow[i] }).append($("<p/>", { "class": "card-text", text: "52 Week High: $" + fiveTwoWeekHigh[i] }))).append($("<a/>", { "href": "#", "class": "card-link", text: news[i] })))
+      $("#cardDisp").append($("<div/>", { "class": "card", "style": "width: 25rem" }).append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: "$ " + latestPrices[i] }).append($("<h6/>", { "class": "card-subtitle mb-2 text-muted", "id": "price", text: company[i] }))))).append($("<p/>", { "class": "card-text", text: "52 Week Low: $" + fiveTwoWeekLow[i] }).append($("<p/>", { "class": "card-text", text: "52 Week High: $" + fiveTwoWeekHigh[i] }))).append($("<a/>", { "href": news[i].url, "class": "card-link", text: news[i].headline })))
     }
 
   }
