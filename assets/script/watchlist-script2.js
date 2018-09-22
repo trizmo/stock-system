@@ -174,37 +174,10 @@ $(document).ready(function () {
     }
 
 
-    // OLD CARDS
-    // for (i = 0; i < watchlist.length; i++) {
-    //   // creating card details
-    //   $("#cardDisp").append($("<div/>", { "class": "card-wrapper", "style": "width: 100%" })
-    //     .append($("<div/>", { "class": "card-body" }).append($("<h5/>", { "class": "card-title", "id": "symbol", text: watchlist[i] })
-    //       .append($("<h6/>", { "class": "price-text", "id": "price", text: "$ " + latestPrices[i] })
-    //         .append($("<h6/>", { "class": "card-subtitle mb-2", "id": "price", text: company[i] })
-    //         )
-    //         .append($("<p/>", { "class": "card-text", text: "Target Price Alert: " })
-    //           .append($("<input/>", { "class": "card-text", "id": "targetPriceInput" })
-    //           )
-    //         )
-    //       )
-    //     )
-    //     )
-    //     .append($("<p/>", { "class": "card-text", text: "52 Week Low: $" + fiveTwoWeekLow[i] })
-    //       .append($("<p/>", { "class": "card-text", text: "52 Week High: $" + fiveTwoWeekHigh[i] })
-    //       )
-    //     )
-    //     .append($("<p/>", { "class": "card-text", text: "Percentage Change: " + (changePercent[i] * 100 + "%") })
-    //       .append($("<p/>", { "class": "card-text", text: "52 Week High: $" + fiveTwoWeekHigh[i] })
-    //       )
-    //     )
-    //     .append($("<a/>", { "href": news[i].url, "target": "_blank", "class": "card-link", text: news[i].headline })
-    //     )
-    //   )
-    // }
-
   }
 
   function captureTargetPrice() {
+    console.log("captureTargetPrice Running")
     $("#targetPriceInput").keyup(function (e) {
       if (e.keyCode === 13) {
         var value = $("#targetPriceInput").val()
@@ -218,23 +191,49 @@ $(document).ready(function () {
 
 
   // adding to watchlist
-  $("#watchInputSubmit").on("click", function () {
-    var inputData = $("#watchInput").val();
-    inputDataUC = inputData.toUpperCase();
-    console.log("inputdata is: " + inputDataUC);
-    if (watchlist.includes(inputDataUC) || inputDataUC === "") {
-      console.log("error: inputData already exists or is empty");
-    } else {
-      watchlist.push(inputDataUC);
-      console.log(watchlist);
-      console.log("getting data");
-      getData();
-      $("#cardDisp").html("");
-      setTimeout(function () {
-        createCard()
-      }, 1000 * 1);
+  $("#watchInput").keyup(function (e){
+    if(e.keyCode === 13){
+      var inputData = $("#watchInput").val();
+      inputDataUC = inputData.toUpperCase();
+      console.log("inputdata is: " + inputDataUC);
+      if (watchlist.includes(inputDataUC) || inputDataUC === "") {
+        console.log("error: inputData already exists or is empty");
+      } else {
+        watchlist.push(inputDataUC);
+        console.log(watchlist);
+        console.log("getting data");
+        getData();
+        $("#cardDisp").html("");
+        setTimeout(function () {
+          createCard()
+        }, 1000 * 1);
+      }
+
     }
-  });
+
+
+  })
+
+
+
+
+  // $("#watchInputSubmit").on("click", function () {
+  //   var inputData = $("#watchInput").val();
+  //   inputDataUC = inputData.toUpperCase();
+  //   console.log("inputdata is: " + inputDataUC);
+  //   if (watchlist.includes(inputDataUC) || inputDataUC === "") {
+  //     console.log("error: inputData already exists or is empty");
+  //   } else {
+  //     watchlist.push(inputDataUC);
+  //     console.log(watchlist);
+  //     console.log("getting data");
+  //     getData();
+  //     $("#cardDisp").html("");
+  //     setTimeout(function () {
+  //       createCard()
+  //     }, 1000 * 1);
+  //   }
+  // });
 
   //starting app on doc ready
   checker()
