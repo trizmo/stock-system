@@ -1,22 +1,32 @@
 body {
-  background-color: #003459;
+  background-color: #161616;
+  color: #E8E0DC;
 }
 
 a {
   text-decoration: none;
 }
 
-.centered {
+.ticker {
+  background-color: #020300;
+  height: 35px;
+}
+
+/* .centered {
   float: middle;
   clear:both;
   margin:auto;
 
-}
+} */
 
 .head {
-  border-bottom: 6px #D56062 solid;
-  margin-bottom: 15px;
-  background-color: #E8E8E8;
+  border-bottom: 6px #FF9F1C solid;
+  /* margin-bottom: 15px; */
+  background-color: #252625;
+}
+
+.menu {
+  /* border-top:1px solid red; */
 }
 
 .gfont1 {
@@ -26,7 +36,7 @@ a {
 }
 .gfont2 {
   font-family: 'Lobster', cursive;
-  color: #00487C;
+  color: #FF9F1C;
 
 }
 .gfont3 {
@@ -40,43 +50,59 @@ a {
 }
 
 .quickQuote {
-  background-color: lightgray;
   border-radius: 5px;
   box-shadow: 2px 2px 5px;
-  margin: 10px 0px 10px 0px
+  margin-top: 10px;
+  margin-bottom: 10px;
 
 }
 
 .miscData {
-  background-color: lightgray;
+  background-color: #3A3837;
   border-radius: 5px;
   box-shadow: 2px 2px 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+.wrapper {
+  box-shadow: 2px 2px 8px black;
+  background-color: #3A3837;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.card-wrapper{
+  box-shadow: 2px 2px 8px black;
+  background-color: clear;
+  border: 1px solid #FF9F1C;
+  border-radius: 5px;
   margin: 10px 0px 10px 0px
 
 }
 
-.card {
-  margin-bottom: 10px;
-  box-shadow: 1px 1px 5px
-}
 
-#cardDisp {
-  margin-top: 10px;
+.cardDispContainer {
+  margin: 10px 0px 10px 0px
 }
 
 .bigGains {
-  border-top: solid black 3px;
+  border-top: solid #FF9F1C 3px;
   margin-top: 5px;
   
 }
 
 .bigLose {
-  border-top: solid black 3px;
+  border-top: solid #FF9F1C 3px;
   margin-top: 5px;
   
 }
 
 .loader {
+  margin: 10px 0px 10px 0px;
   border: 10px solid #f3f3f3;
   border-radius: 50%;
   border-top: 10px solid #3498db;

@@ -4,10 +4,11 @@
 <head>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="watchlist-script2.js"></script>
-  <link href="style.css" rel="stylesheet">
+  <!-- <link href="style.css" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css?family=Cinzel|Lobster|Old+Standard+TT|Quicksand" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,20 +16,32 @@
 
 </head>
 
-<body style="background-color: #3E6680">
+<body>
+  <!-- TICKER DISP FOR INDICES, CURRENCIES, NEWS -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="ticker col-md-12">
 
-  <!--OLD NAV BAR-->
 
-  <div class="container-fluid text-center head">
-    <div class="container row centered">
-      <div class="col-12">
-        <h1 class="gfont2" > <a href="index.html">Market Systems 2.0</a></h1>
       </div>
     </div>
   </div>
 
+  <!--OLD NAV BAR-->
+  <div class="container-fluid text-center head">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="gfont2" href="index.html">Market Systems 2.1</h1>
+      </div>
 
-  <div class="container card">
+      <div class="col-md-12 menu">
+        <p><a href="index.html">Quick Quote</a> | <a href="watchlist.html">WatchList</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WATCHLIST WRAPPER -->
+  <div class="container wrapper">
     <h3 class="text-center">Watchlist</h3>
     <h4></h4>
 
@@ -55,7 +68,7 @@
     </div>
 
 
-    <div class="col-md-12">
+    <div class="col-md-12 cardDispContainer">
       <div class="loader text-center"></div>
       <div class="" id="cardDisp">
 
@@ -72,21 +85,6 @@
   </div>
 
 
-
-  <!-- <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title" id="symbol">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-muted" id="price">  Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div> -->
-
-
-
-
-  <div id="dataFeed"></div>
 
 
 </body>
