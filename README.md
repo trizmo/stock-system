@@ -1,7 +1,7 @@
 # Market Systems
 ## By trizCA
 
-This web app pulls stock closing price for pre-determined date. 
+This app will pull and display market data
 
 # Features
 ## Quick info
@@ -24,6 +24,9 @@ This project it not even being close to complete. There's still a lot more go to
 
 # Technology Used
 - Javascript
+
+## Misc notes
+- calls can be made 100 times per second
 
 # Screenshot
 <img src="./assets/img/screenshot.jpg">

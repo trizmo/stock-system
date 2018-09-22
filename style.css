@@ -36,9 +36,11 @@ a {
 }
 .gfont2 {
   font-family: 'Lobster', cursive;
-  color: #FF9F1C;
-
-}
+  background: linear-gradient(90deg, rgb(197, 118, 0) 0%, rgb(255, 235, 60) 77%);  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 2px solid black;
+  /* text-shadow: -3px -0px 4px #006; */
+ }
 .gfont3 {
   font-family: 'Cinzel', serif;
   color: #00487C;
