@@ -20,7 +20,7 @@ a {
 } */
 
 .head {
-  border-bottom: 6px #FF9F1C solid;
+  border-bottom: 4px #FF9F1C solid;
   /* margin-bottom: 15px; */
   background-color: #252625;
 }
@@ -49,6 +49,10 @@ a {
 .gfont4 {
   font-family: 'Old Standard TT', serif;
   color: #00487C;
+}
+
+input#coin,#stockInput {
+  border-radius: 50px;
 }
 
 .quickQuote {
@@ -91,14 +95,41 @@ a {
   margin: 10px 0px 10px 0px
 }
 
+
+.data-panel-text{
+  line-height: .35em;
+  margin: 10px 0px 10px 0px
+}
+
+.news-panel-text{
+  line-height: .75em;
+  margin: 10px 0px 10px 0px;
+  border-top: 1px solid #FF9F1C;
+  padding-top: 10px;
+
+}
+
+input.alertPriceInput {
+  border: none;
+  border-bottom: 1px solid darkgrey;
+  background-color: #3A3837;
+}
+
+
+
+
+
+
+
+
 .bigGains {
-  border-top: solid #FF9F1C 3px;
+  border-top: solid #FF9F1C 2px;
   margin-top: 5px;
   
 }
 
 .bigLose {
-  border-top: solid #FF9F1C 3px;
+  border-top: solid #FF9F1C 2px;
   margin-top: 5px;
   
 }

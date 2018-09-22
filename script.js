@@ -72,21 +72,43 @@ var toUSD = "&to_currency=USD";
 
 var capiKey = "&apikey=N06BDYLYWYZK0MA6"; //PRIVATE KEY
 
+// $(document).ready(function () {
+//   $("#csubmit").click(function () {
+//     var coin = $("#coin").val();
+//     if (coin != "") {
+//       $.ajax({
+//         type: "GET",
+//         url: cryptoApi + coin + toUSD + capiKey,
+//         success: function (data) {
+//           let close = data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]; //location of current exchange rate
+//           // console.log(close);
+//           $("#cryptoPriceOutput").html(close); //output to html
+//           $("#cryptoPriceOutput").prepend(coin.toUpperCase() + ": $"); //adds crypto name
+//         }
+//       });
+//     }
+//   });
+// });
+
 $(document).ready(function () {
-  $("#csubmit").click(function () {
-    var coin = $("#coin").val();
-    if (coin != "") {
-      $.ajax({
-        type: "GET",
-        url: cryptoApi + coin + toUSD + capiKey,
-        success: function (data) {
-          let close = data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]; //location of current exchange rate
-          // console.log(close);
-          $("#cryptoPriceOutput").html(close); //output to html
-          $("#cryptoPriceOutput").prepend(coin.toUpperCase() + ": $"); //adds crypto name
-        }
-      });
+  $("#coin").keyup(function (e) {
+    if(e.keyCode === 13){
+      var coin = $("#coin").val();
+      if (coin != "") {
+        $.ajax({
+          type: "GET",
+          url: cryptoApi + coin + toUSD + capiKey,
+          success: function (data) {
+            let close = data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]; //location of current exchange rate
+            // console.log(close);
+            $("#cryptoPriceOutput").html(close); //output to html
+            $("#cryptoPriceOutput").prepend(coin.toUpperCase() + ": $"); //adds crypto name
+          }
+        });
+      }
+
     }
+
   });
 });
 
