@@ -41,6 +41,7 @@ $(document).ready(function () {
 
 
   // creating and updating alertlist
+  // GET FROM DATABASE
   var alertList = "";
   database.ref().on("value", function(snapshot) {
     if(snapshot.hasChild("alertList")){
@@ -71,8 +72,9 @@ $(document).ready(function () {
     var targetP = $("#target-price").val();
     var intTargetP = parseInt(targetP);
     var stockSym = $("#stock").val();
-    alertList.push({ stock: stockSym, targetPrice: intTargetP });
-    symbolArr.push(stockSym)
+    var stockSymUC = stockSym.toUpperCase();
+    alertList.push({ stock: stockSymUC, targetPrice: intTargetP });
+    symbolArr.push(stockSymUC.toUpperCase())
     console.log(alertList);
     database.ref().set({
       alertList
