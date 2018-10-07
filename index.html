@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
   <!-- <link href="style.css" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css?family=Cinzel|Lobster|Old+Standard+TT|Quicksand" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -49,63 +50,66 @@
   <!-- Quick Quote -->
 
   <div class="container quickQuote wrapper">
-    <h3 class="text-center">Quick Quote</h2>
+    <h3 class="text-center">Quick Quote
+      </h2>
 
-    <div class="row">
-      <!-- NASDAQ MARKET -->
-      <div class="container col-md-6">
+      <div class="row">
+        <!-- NASDAQ MARKET -->
+        <div class="container col-md-6">
 
-        <div class="text-center">
-          <h4 class="text-center">Stock Market</h3>
-          <p>Pulls current stock closing price</p>
+          <div class="text-center">
+            <h4 class="text-center">Stock Market
+    </h3>
+    <p>Pulls current stock closing price</p>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-12 text-center">
+          <input type="text" id="stockInput" class="form-control" placeholder="Enter Stock... ex: MSFT">
         </div>
 
-
-        <div class="container">
-          <div class="row">
-
-            <div class="col-12 text-center">
-              <input type="text" id="stockInput" class="form-control" placeholder="Enter Stock... ex: MSFT">
-            </div>
-
-          </div>
-
-          <br>
-
-          <div>
-            <p class="display-5 text-center" id="check"></p>
-          </div>
-
-        </div>
       </div>
 
-      <!-- Crypto MARKET -->
-      <div class="container col-md-6">
-        <div class="text-center">
-          <h4 class="text-center">Cryptocurrency</h3>
+      <br>
+
+      <div>
+        <p class="display-5 text-center" id="check"></p>
+      </div>
+
+    </div>
+    </div>
+
+    <!-- Crypto MARKET -->
+    <div class="container col-md-6">
+      <div class="text-center">
+        <h4 class="text-center">Cryptocurrency
+          </h3>
           <p>Pulls current coin price exchange with USD</p>
 
-        </div>
-
-
-        <div class="container">
-          <div class="row">
-
-            <div class="col-12 text-center">
-              <input type="text" id="coin" class="form-control" placeholder="Enter coin... ex: BTC">
-            </div>
-
-          
-          </div>
-
-          <br>
-
-          <div>
-            <p class="display-5 text-center" id="cryptoPriceOutput"></p>
-          </div>
-
-        </div>
       </div>
+
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-12 text-center">
+            <input type="text" id="coin" class="form-control" placeholder="Enter coin... ex: BTC">
+          </div>
+
+
+        </div>
+
+        <br>
+
+        <div>
+          <p class="display-5 text-center" id="cryptoPriceOutput"></p>
+        </div>
+
+      </div>
+    </div>
 
 
 

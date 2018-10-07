@@ -51,7 +51,7 @@ a {
   color: #00487C;
 }
 
-input#coin,#stockInput {
+input#coin,#stockInput,#watchInput {
   border-radius: 50px;
 }
 
