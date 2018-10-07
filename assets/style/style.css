@@ -87,7 +87,6 @@ input#coin,#stockInput,#watchInput {
   border: 1px solid #FF9F1C;
   border-radius: 5px;
   margin: 10px 0px 10px 0px
-
 }
 
 
@@ -116,12 +115,6 @@ input.alertPriceInput {
 }
 
 
-
-
-
-
-
-
 .bigGains {
   border-top: solid #FF9F1C 2px;
   margin-top: 5px;
@@ -144,6 +137,19 @@ input.alertPriceInput {
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
 }
+
+
+/* ALERT SYSTEM*/
+.alerts-table{
+  width:100%;
+}
+
+
+
+
+
+
+
 
 /* Safari */
 @-webkit-keyframes spin {

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+  <!-- <link href="style.css" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Cinzel|Lobster|Old+Standard+TT|Quicksand" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link href="./assets/style/style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Market Systems</title>
+
+</head>
+
+<body>
+
+
+  <!-- TICKER DISP FOR INDICES, CURRENCIES, NEWS -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="ticker col-md-12">
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--OLD NAV BAR-->
+
+  <div class="container-fluid text-center head">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="gfont2" href="index.html">Market Systems 2.1</h1>
+      </div>
+
+      <div class="col-md-12 menu">
+        <p><a href="./index.html">Quick Quote</a> | <a href="./watchlist.html">WatchList</a></p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="text-center container card-wrapper">
+
+
+    <input type="text" placeholder="stock" id="stock"> <br>
+    <input type="text" placeholder="target-price" id="target-price"><br>
+    <button id="submit">submit</button>
+
+
+  </div>
+
+
+  <div class="container card-wrapper">
+
+    <table class="alerts-table" id="tableDisp">
+      <tr>
+        <thead>
+        <th>Stock</th>
+        <th>Current Price</th>
+        <th>Target Price</th>
+        </thead>
+      </tr>
+
+     
+
+  
+    </table>
+
+
+  </div>
+
+
+
+
+  <!--- JAVASCRIPT TAGS ---->
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.js"></script>
+  <script type="text/javascript" src="./assets/script/alert.js"></script>
+
+</body>
+
+</html>
