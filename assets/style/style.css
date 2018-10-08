@@ -86,7 +86,10 @@ input#coin,#stockInput,#watchInput {
   background-color: clear;
   border: 1px solid #FF9F1C;
   border-radius: 5px;
-  margin: 10px 0px 10px 0px
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+
 }
 
 
@@ -141,6 +144,9 @@ input.alertPriceInput {
 
 /* ALERT SYSTEM*/
 .alerts-table{
+  width:100%;
+}
+.crypto-alerts-table{
   width:100%;
 }
 
