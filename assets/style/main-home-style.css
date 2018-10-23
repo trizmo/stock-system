@@ -1,0 +1,40 @@
+.container{
+  width:100%;
+  padding:15px;
+}
+
+.paralaxx {
+    background: url("http://gdurl.com/WtFK") no-repeat center; 
+    background-size: cover;
+    background-attachment: fixed;
+    height:300px;
+}
+
+.opak-blue{
+    background:rgba(45,50,70, .25)
+  
+}
+
+.opak-gray{
+    background:rgba(144,144,144, .35)
+  
+}
+
+.shadowz{
+  box-shadow: 0px 0px 30px #000000
+}
+
+.half {
+  width:50%;
+  
+}
+
+.gpihead{
+  background-image:url("http://gdurl.com/qNEk");
+  background-size: cover;
+}
+
+nav.db-login-btn {
+  background-color: #e7e7e7; 
+  color: black;
+}
