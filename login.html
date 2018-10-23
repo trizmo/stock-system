@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  <script src="./assets/script/login.js"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-  <form>
-    <input type="email" placeholder="email@example.com" id="email">
-    <input type="password" placeholder="Enter Password..." id="password">
-    <button type="submit" id="submit">Submit</button>
 
-  </form>
+    <head>
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script src="./assets/script/login.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Lobster|Old+Standard+TT|Quicksand" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+        <link href="./assets/style/style.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Market Systems</title>
+      
+      </head>
+
+<body>
+
+  <div class="container text-center login-form">
+    <form>
+      <input class="mx-auto" type="email" placeholder="email" id="email">
+
+      <input type="password" placeholder="password" id="password">
+
+      <button type="submit" id="submit">Login</button>
+      <button type="submit" id="signUp">Sign up</button>
+      <button type="submit" id="logOut" class="hide">Log Out</button>
+
+
+    </form>
+    <div>
 
 
 
 </body>
+
 </html>

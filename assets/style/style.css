@@ -170,3 +170,36 @@ input.alertPriceInput {
 
 
 
+
+
+/* ## LOGIN FORM ##*/
+
+.login-form input {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  display: block;
+  border: none;
+  background: none;
+  border-bottom: #FF9F1C 1px solid;
+  font-size: 1.5em;
+  text-align: center;
+  color: #dcdcdc
+}
+
+.login-form button {
+  border: none;
+  background: none;
+  color: rgb(184, 114, 18);
+}
+
+#logOut button {
+  border: none;
+  background: none;
+  color: rgb(184, 114, 18);
+}
+
+
+
+.login-form {
+  margin-top: 10%;
+}
