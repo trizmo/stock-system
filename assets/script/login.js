@@ -1,6 +1,8 @@
 $(document).ready(function () {
   var loggedIn = false;
 
+
+
   var config = {
     apiKey: "AIzaSyAlCXQUsNZnHq0ViG6KYg7yNz9a34OuHfE",
     authDomain: "market-system-a6b28.firebaseapp.com",
@@ -9,7 +11,6 @@ $(document).ready(function () {
     storageBucket: "market-system-a6b28.appspot.com",
     messagingSenderId: "609139349737"
   }
-
   firebase.initializeApp(config);
 
   function userVal() {
@@ -31,6 +32,18 @@ $(document).ready(function () {
         checkLoggedStatus()
       }
     })
+  }
+
+  function send_email_val(){
+    var user = firebase.auth().currentUser;
+    user.sendEmailVerification().then(function() {
+      $("#userVerified").text("Verification email sent")
+    }).catch(function(event){
+      $("#userVerified").text(event.message)
+    })
+
+    
+
   }
 
 
@@ -68,6 +81,8 @@ $(document).ready(function () {
       .catch(function (event) {
         console.log(event.message);
         $("#credErr").css("visibility", "visible");
+        $("#credErr").text(event.message)
+
       });
   });
 
@@ -79,10 +94,15 @@ $(document).ready(function () {
     promise
       .then(function () {
         console.log("user succesfully created")
-        userVal()
+        send_email_val()
       })
-      .catch(function () {
-        console.log(event.message);
+      .catch(function (event) {
+        if (event.code === "auth/invalid-email") {
+          console.log(event.code + ": " + event.message)
+          console.log("bingo")
+          $("#credErr").css("visibility", "visible")
+          $("#credErr").text(event.message)
+        }
       })
   });
 
@@ -98,6 +118,17 @@ $(document).ready(function () {
 
 });
 
+// var user = firebase.auth().currentUser;
+// var name, email, photoUrl, uid, emailVerified;
 
+// if (user != null) {
+//   name = user.displayName;
+//   email = user.email;
+//   photoUrl = user.photoURL;
+//   emailVerified = user.emailVerified;
+//   uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+//   // this value to authenticate with your backend server, if
+//   // you have one. Use User.getToken() instead.
+// }
 
 

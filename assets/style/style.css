@@ -175,7 +175,7 @@ input.alertPriceInput {
   border: none;
   background: none;
   color: rgb(184, 114, 18);
-
+  font-size: 1.5rem;
 }
 
 #logOut button {
@@ -198,4 +198,9 @@ input.alertPriceInput {
 
 .loginStatus{
   visibility: hidden;
+}
+
+.userVerified{
+
+
 }
