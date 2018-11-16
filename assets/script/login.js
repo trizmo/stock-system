@@ -1,10 +1,6 @@
 $(document).ready(function () {
 
 
-
-
-
-
   var config = {
     apiKey: "AIzaSyAlCXQUsNZnHq0ViG6KYg7yNz9a34OuHfE",
     authDomain: "market-system-a6b28.firebaseapp.com",
@@ -31,9 +27,7 @@ $(document).ready(function () {
 
   $("#logOut").click(function (event) {
     firebase.auth().signOut();
-    alert("#logOut clicked!")
-
-
+    alert("#logOut clicked!");
   });
 
   $("#submit").click(function (event) {
@@ -41,7 +35,7 @@ $(document).ready(function () {
 
     const userEmail = $("#email").val();
     const userPass = $("#password").val();
-    // console.log(userEmail + userPass);
+    console.log(userEmail + userPass);
     const promise = firebase.auth().signInWithEmailAndPassword(userEmail, userPass);
     promise
       .then()
@@ -84,10 +78,10 @@ $(document).ready(function () {
 
 
   function goToMS() {
-    document.location.assign("index.html");
+    // document.location.assign("index.html");
   }
   function goToLogin() {
-    document.location.assign("login.html");
+    // document.location.assign("login.html");
   }
 
 
