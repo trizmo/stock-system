@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  var loggedIn = false;
 
   var config = {
     apiKey: "AIzaSyAlCXQUsNZnHq0ViG6KYg7yNz9a34OuHfE",
@@ -12,76 +12,87 @@ $(document).ready(function () {
 
   firebase.initializeApp(config);
 
-  var loggedIn = false;
+  function userVal() {
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+        console.log(firebaseUser);
+        console.log("Login successful!");
+        $("#logOut").css("visibility", "visible");
+        $("#loginState").css("visibility", "visible");
+        $("#credErr").css("visibility", "hidden");
+
+        loggedIn = true;
+        checkLoggedStatus()
+      } else {
+        console.log(firebaseUser)
+        console.log("NOT LOGGED IN");
+        $("#logOut").css("visibility", "hidden");
+        loggedIn = false;
+        checkLoggedStatus()
+      }
+    })
+  }
+
+
   function checkLoggedStatus() {
     if (loggedIn) {
       goToMS()
       console.log("login successful")
     } else {
-      // goToLogin()
+      goToLogin()
       console.log("login failed")
     }
   }
 
 
 
+
+
   $("#logOut").click(function (event) {
+    event.preventDefault();
     firebase.auth().signOut();
-    alert("#logOut clicked!");
+    console.log("#logOut clicked!");
+    userVal()
   });
 
   $("#submit").click(function (event) {
     event.preventDefault();
-
     const userEmail = $("#email").val();
     const userPass = $("#password").val();
     console.log(userEmail + userPass);
     const promise = firebase.auth().signInWithEmailAndPassword(userEmail, userPass);
     promise
-      .then()
-      .catch(event => console.log(event.message));
-
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-      if (firebaseUser) {
-        console.log(firebaseUser);
-        // $("#logOut").removeClass("hide");
-        // $("#logOut").addClass("show");
-        $("#logOut").css("visibility", "visible");
-        checkLoggedStatus()
-      } else {
-        console.log("NOT LOGGED IN");
-        // $("#logOut").addClass("hide");
-        // $("#logOut").removeClass("show");
-        $("#logOut").css("visibility", "hidden");
-        console.log(firebaseUser)
-
-        loggedIn = false;
-        checkLoggedStatus()
-      }
-    })
-
-
+      .then(function () {
+        userVal()
+      })
+      .catch(function (event) {
+        console.log(event.message);
+        $("#credErr").css("visibility", "visible");
+      });
   });
 
   $("#signUp").click(function (event) {
     event.preventDefault();
-
     const userEmail = $("#email").val();
     const userPass = $("#password").val();
     const promise = firebase.auth().createUserWithEmailAndPassword(userEmail, userPass);
     promise
-      .then(event => loggedIn = true)
-      .catch(event => console.log(event.message));
-
+      .then(function () {
+        console.log("user succesfully created")
+        userVal()
+      })
+      .catch(function () {
+        console.log(event.message);
+      })
   });
 
 
 
   function goToMS() {
-    // document.location.assign("index.html");
+    document.location.assign("index.html");
   }
   function goToLogin() {
-    // document.location.assign("login.html");
+    document.location.assign("login.html");
   }
 
 

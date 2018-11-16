@@ -35,6 +35,10 @@ var objDate = "[" + '"' + fullDate + '"' + "]";
 
 // calling stock price function
 $(document).ready(function () {
+$("#logOut").click(function(){
+  
+})
+
   $("#stockInput").keyup(function (e) {
     if (e.keyCode === 13) {
       var stock = $("#stockInput").val();

@@ -12,12 +12,6 @@ a {
   height: 35px;
 }
 
-/* .centered {
-  float: middle;
-  clear:both;
-  margin:auto;
-
-} */
 
 .head {
   border-bottom: 4px #FF9F1C solid;
@@ -89,9 +83,7 @@ input#coin,#stockInput,#watchInput {
   margin-top: 10px;
   margin-bottom: 10px;
   padding-bottom: 10px;
-
 }
-
 
 .cardDispContainer {
   margin: 10px 0px 10px 0px
@@ -108,7 +100,6 @@ input#coin,#stockInput,#watchInput {
   margin: 10px 0px 10px 0px;
   border-top: 1px solid #FF9F1C;
   padding-top: 10px;
-
 }
 
 input.alertPriceInput {
@@ -153,10 +144,6 @@ input.alertPriceInput {
 
 
 
-
-
-
-
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
@@ -167,8 +154,6 @@ input.alertPriceInput {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-
 
 
 
@@ -208,5 +193,9 @@ input.alertPriceInput {
 
 .credError {
   color: darkred;
+  visibility: hidden;
+}
 
+.loginStatus{
+  visibility: hidden;
 }
