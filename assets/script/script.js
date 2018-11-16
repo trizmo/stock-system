@@ -1,5 +1,17 @@
 //NASDAQ function
 
+// FIREBASE STUFF
+var config = {
+  apiKey: "AIzaSyAlCXQUsNZnHq0ViG6KYg7yNz9a34OuHfE",
+  authDomain: "market-system-a6b28.firebaseapp.com",
+  databaseURL: "https://market-system-a6b28.firebaseio.com",
+  projectId: "market-system-a6b28",
+  storageBucket: "market-system-a6b28.appspot.com",
+  messagingSenderId: "609139349737"
+}
+firebase.initializeApp(config);
+
+
 
 
 //CREATING THE URL
@@ -35,8 +47,24 @@ var objDate = "[" + '"' + fullDate + '"' + "]";
 
 // calling stock price function
 $(document).ready(function () {
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log("user logged in!!")
+      // User is signed in.
+    } else {
+      // alert("user NOT logged in- sending back to login page")
+      document.location.assign("login.html");
+      // No user is signed in.
+    }
+  });
+
+
+
 $("#logOut").click(function(){
-  
+  event.preventDefault();
+  firebase.auth().signOut();
+  console.log("#logOut clicked!");
 })
 
   $("#stockInput").keyup(function (e) {
