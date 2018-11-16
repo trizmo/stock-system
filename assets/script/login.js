@@ -13,6 +13,21 @@ $(document).ready(function () {
   }
   firebase.initializeApp(config);
 
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log("user logged in!!")
+      document.location.assign("index.html");
+
+      // User is signed in.
+    } else {
+      // alert("user NOT logged in- sending back to login page")
+      // document.location.assign("login.html");
+      // No user is signed in.
+    }
+  });
+
+
+
   function userVal() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (firebaseUser) {
