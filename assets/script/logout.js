@@ -14,7 +14,6 @@ $(document).ready(function () {
   $("#logOut").click(function (event) {
     firebase.auth().signOut();
     console.log("#logOut clicked!")
-    goToLogin()
   });
 
   function goToLogin() {

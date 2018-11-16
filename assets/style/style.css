@@ -205,3 +205,8 @@ input.alertPriceInput {
 .login-form {
   margin-top: 10%;
 }
+
+.credError {
+  color: darkred;
+
+}

@@ -1,16 +1,7 @@
 $(document).ready(function () {
 
 
-  var loggedIn = false;
-  function checkLoggedStatus() {
-    if (loggedIn) {
-      goToMS()
-      console.log("login successful")
-    } else {
-      goToLogin()
-      console.log("login failed")
-    }
-  }
+
 
 
 
@@ -25,21 +16,35 @@ $(document).ready(function () {
 
   firebase.initializeApp(config);
 
+  var loggedIn = false;
+  function checkLoggedStatus() {
+    if (loggedIn) {
+      goToMS()
+      console.log("login successful")
+    } else {
+      // goToLogin()
+      console.log("login failed")
+    }
+  }
+
+
+
   $("#logOut").click(function (event) {
     firebase.auth().signOut();
-    console.log("#logOut clicked!")
-    goToLogin()
+    alert("#logOut clicked!")
+
+
   });
 
   $("#submit").click(function (event) {
-    // event.preventDefault();
+    event.preventDefault();
 
     const userEmail = $("#email").val();
     const userPass = $("#password").val();
     // console.log(userEmail + userPass);
     const promise = firebase.auth().signInWithEmailAndPassword(userEmail, userPass);
     promise
-      .then(console.log("password submitted"))
+      .then()
       .catch(event => console.log(event.message));
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -48,18 +53,19 @@ $(document).ready(function () {
         // $("#logOut").removeClass("hide");
         // $("#logOut").addClass("show");
         $("#logOut").css("visibility", "visible");
-        loggedIn = true;
         checkLoggedStatus()
       } else {
         console.log("NOT LOGGED IN");
         // $("#logOut").addClass("hide");
         // $("#logOut").removeClass("show");
         $("#logOut").css("visibility", "hidden");
+        console.log(firebaseUser)
 
         loggedIn = false;
         checkLoggedStatus()
       }
     })
+
 
   });
 
@@ -83,28 +89,6 @@ $(document).ready(function () {
   function goToLogin() {
     document.location.assign("login.html");
   }
-
-
-  firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-      console.log(firebaseUser);
-      // $("#logOut").removeClass("hide");
-      // $("#logOut").addClass("show");
-      $("#logOut").css("visibility", "visible");
-      loggedIn = true;
-    } else {
-      console.log("NOT LOGGED IN");
-      // $("#logOut").addClass("hide");
-      // $("#logOut").removeClass("show");
-      $("#logOut").css("visibility", "hidden");
-
-      loggedIn = false;
-    }
-  })
-
-
-
-
 
 
 });

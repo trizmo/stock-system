@@ -33,6 +33,75 @@ news headlines
 
 
 
+################
+# login
+- user enters email and password
+- determine if correct
+  - if correct send to market-systems page
+  - else advise user and clear fields
+
+
+# sign-up
+- user enters email and password
+- determine if existing
+  -if existing, return back to login page
+  -else add user to Auth
+    -return back to login page
+
+
+# log-out
+- if user is signed in log-out button is available
+  - else login or sign up only appears
+
+# login status
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 MSFT.news[""0""].headline
 
