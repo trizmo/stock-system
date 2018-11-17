@@ -1,4 +1,15 @@
+class QQListItem {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+const qqlistArray = [];
+
+
+
 //NASDAQ function
+
 
 // FIREBASE STUFF
 var config = {
@@ -48,7 +59,7 @@ var objDate = "[" + '"' + fullDate + '"' + "]";
 // calling stock price function
 $(document).ready(function () {
 
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       console.log("user logged in!!")
       // User is signed in.
@@ -61,34 +72,38 @@ $(document).ready(function () {
 
 
 
-$("#logOut").click(function(){
-  event.preventDefault();
-  firebase.auth().signOut();
-  console.log("#logOut clicked!");
-})
+  $("#logOut").click(function () {
+    event.preventDefault();
+    firebase.auth().signOut();
+    console.log("#logOut clicked!");
+  })
 
   $("#stockInput").keyup(function (e) {
     if (e.keyCode === 13) {
       var stock = $("#stockInput").val();
-        console.log("Stock selected: " + stock);
-        console.log("ajax Callling: " + api + stock + apiKey);
-        $.ajax({
-          type: "GET",
-          // url: api + stock + apiKey,
-          url: api + stock + apiKey,
-          success: function (data) {
-            console.log(stock.toUpperCase());
-            // let close = data['Time Series (Daily)'] + [fullDate] + ['4. close']; //location of closing price (need to figure out how to automatically get last price)
-            let close = data[stock.toUpperCase()]["quote"]["latestPrice"];
+      console.log("Stock selected: " + stock);
+      console.log("ajax Callling: " + api + stock + apiKey);
+      $.ajax({
+        type: "GET",
+        // url: api + stock + apiKey,
+        url: api + stock + apiKey,
+        success: function (data) {
+          console.log(stock.toUpperCase());
+          // let close = data['Time Series (Daily)'] + [fullDate] + ['4. close']; //location of closing price (need to figure out how to automatically get last price)
+          let close = data[stock.toUpperCase()]["quote"]["latestPrice"];
 
-            console.log(close);
-            // console.log("Today's date is: " + fullDate);
+          console.log(close);
+          // console.log("Today's date is: " + fullDate);
 
-            $("#check").html(close); //output to html
-            $("#check").prepend(stock.toUpperCase() + ": $"); //adds stock name
-          }
-        });
-      
+          $("#check").html(close); //output to html
+          $("#check").prepend(stock.toUpperCase() + ": $"); //adds stock name
+
+
+
+
+        }
+      });
+
     }
 
 
@@ -122,9 +137,14 @@ var capiKey = "&apikey=N06BDYLYWYZK0MA6"; //PRIVATE KEY
 //   });
 // });
 
+function createButton() {
+  $("#qqListDisp").append('<li class="nav-item list-item"></li>').append('<a data-name="element.name" class="nav-link active element-button" href="#">' + element.name + '</a>')
+
+}
+
 $(document).ready(function () {
   $("#coin").keyup(function (e) {
-    if(e.keyCode === 13){
+    if (e.keyCode === 13) {
       var coin = $("#coin").val();
       if (coin != "") {
         $.ajax({
@@ -135,14 +155,33 @@ $(document).ready(function () {
             // console.log(close);
             $("#cryptoPriceOutput").html(close); //output to html
             $("#cryptoPriceOutput").prepend(coin.toUpperCase() + ": $"); //adds crypto name
+            qqlistArray.push(new QQListItem(coin))
+            console.log(qqlistArray)
+            $("#qqListDisp").empty();
+
+
+            qqlistArray.forEach(function (element, index, array) {
+              console.log(element.name);
+              console.log(index.name);
+              console.log(array);
+              createButton()
+            })
+            // for(key in qqlistArray){
+            //   $("#qqListDisp").prepend(key[this.name])
+            // }
           }
         });
       }
-
     }
-
   });
 });
+
+$(document).on("click", ".element-button", function () {
+  $("#data-disp").empty();
+})
+
+
+
 
 
 //misc data
@@ -174,8 +213,17 @@ function biggestLosers() {
   });
 }
 
-biggestGainers()
-biggestLosers()
+function updateDisplay() {
+
+
+}
+
+
+
+
+
+
+
 
 
 // NOTES: DEMO api

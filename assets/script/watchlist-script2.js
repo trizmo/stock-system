@@ -241,9 +241,9 @@ $(document).ready(function () {
   getData()
   setTimeout(function () {
     createCard()
-  }, 1000 * 1);
-  biggestGainers()
-  biggestLosers()
+  }, 250 * 1);
+
+  
   captureTargetPrice()
 
 
