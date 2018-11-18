@@ -97,16 +97,9 @@ $(document).ready(function () {
 
           $("#check").html(close); //output to html
           $("#check").prepend(stock.toUpperCase() + ": $"); //adds stock name
-
-
-
-
         }
       });
-
     }
-
-
   });
 });
 
@@ -136,9 +129,10 @@ var capiKey = "&apikey=N06BDYLYWYZK0MA6"; //PRIVATE KEY
 //     }
 //   });
 // });
-
-function createButton() {
-  $("#qqListDisp").append('<li class="nav-item list-item"></li>').append('<a data-name="element.name" class="nav-link active element-button" href="#">' + element.name + '</a>')
+//
+function createButton(element) {
+  $("#qqListDisp").append('<li class="nav-item list-item"></li>')
+  .append('<a data-btn-name="element.name" class="nav-link active element-button" href="#">' + element.name + '</a>')
 
 }
 
@@ -164,7 +158,7 @@ $(document).ready(function () {
               console.log(element.name);
               console.log(index.name);
               console.log(array);
-              createButton()
+              createButton(element)
             })
             // for(key in qqlistArray){
             //   $("#qqListDisp").prepend(key[this.name])
@@ -177,7 +171,10 @@ $(document).ready(function () {
 });
 
 $(document).on("click", ".element-button", function () {
-  $("#data-disp").empty();
+  console.log("clicked: " + this.)
+  $(".data-disp").empty();
+  $(".data-disp").append(attr(this.data-btn-name));
+
 })
 
 
