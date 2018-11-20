@@ -1,6 +1,7 @@
 class QQListItem {
-  constructor(name) {
+  constructor(name, type) {
     this.name = name;
+    this.type = type
   }
 }
 
@@ -97,9 +98,29 @@ $(document).ready(function () {
 
           $("#check").html(close); //output to html
           $("#check").prepend(stock.toUpperCase() + ": $"); //adds stock name
+
+          qqlistArray.push(new QQListItem(stock, "stock"))
+          console.log(qqlistArray)
+          $("#qqListDisp").empty();
+
+
+          qqlistArray.forEach(function (element, index, array) {
+            console.log(element.name + " " + element.type);
+            createButton(element)
+          })
+
+
+
+
+
+
+
         }
       });
+      $("#stockInput").val("");
+
     }
+
   });
 });
 
@@ -132,7 +153,7 @@ var capiKey = "&apikey=N06BDYLYWYZK0MA6"; //PRIVATE KEY
 //
 function createButton(element) {
   $("#qqListDisp").append('<li class="nav-item list-item"></li>')
-  .append('<a data-btn-name="element.name" class="nav-link active element-button" href="#">' + element.name + '</a>')
+    .append('<a data-btn-name="' + element.name + ' " class="nav-link active element-button" href="#">' + element.name + '</a>')
 
 }
 
@@ -145,19 +166,18 @@ $(document).ready(function () {
           type: "GET",
           url: cryptoApi + coin + toUSD + capiKey,
           success: function (data) {
+            console.log(data)
             let close = data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]; //location of current exchange rate
             // console.log(close);
             $("#cryptoPriceOutput").html(close); //output to html
             $("#cryptoPriceOutput").prepend(coin.toUpperCase() + ": $"); //adds crypto name
-            qqlistArray.push(new QQListItem(coin))
+            qqlistArray.push(new QQListItem(coin, "crypto"))
             console.log(qqlistArray)
             $("#qqListDisp").empty();
 
 
             qqlistArray.forEach(function (element, index, array) {
-              console.log(element.name);
-              console.log(index.name);
-              console.log(array);
+              console.log(element.name + " " + element.type);
               createButton(element)
             })
             // for(key in qqlistArray){
@@ -166,14 +186,41 @@ $(document).ready(function () {
           }
         });
       }
+      $("#coin").val("");
     }
   });
 });
 
 $(document).on("click", ".element-button", function () {
-  console.log("clicked: " + this.)
   $(".data-disp").empty();
-  $(".data-disp").append(attr(this.data-btn-name));
+  let clicked = ($(this).attr("data-btn-name"))
+  console.log(qqlistArray)
+
+
+  for (let i = 0; i < qqlistArray.length; i++) {
+    let name = qqlistArray[i].name;
+    let type = qqlistArray[i].type;
+    if (clicked == name) {
+      console.log("MATCH: " + type + " " + name + " " + clicked)
+    }
+    console.log("NON-MATCH: " + type + " " + name + " " + clicked)
+
+  }
+  // const checker = 
+
+  // if(checker === "stock"){
+  //  console.log("this is a stock!")
+  // } else if (checker === "crypto"){
+  //   console.log("this is a crypto!")
+  // }
+
+
+
+
+
+
+
+
 
 })
 

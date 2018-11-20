@@ -212,3 +212,15 @@ input.alertPriceInput {
 .listDisp {
   margin-top: 5px;
 }
+
+
+/* #### NEWS #### */
+
+.news-card {
+  padding: 5px;
+
+}
+
+.news-card-title {
+  margin-bottom: 5px;
+}

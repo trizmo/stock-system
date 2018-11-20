@@ -36,3 +36,45 @@ This project it not even being close to complete. There's still a lot more go to
 
 
 
+
+
+
+
+// const requirejs = require("requirejs");
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('1acf2fab34b2404c9eb08311a29d310e');
+
+let newsHolder
+let gotNews = false;
+
+function displayNews() {
+  if (gotNews === true) {
+    console.log("DISPLAYING NEWS:")
+    console.log(newsHolder)
+  }
+
+}
+
+// To query /v2/top-headlines
+// All options passed to topHeadlines are optional, but you need to include at least one of them
+newsapi.v2.top-headlines({
+  source: 'associated-press', // required
+  sortBy: 'top' // optional
+}).then(articlesResponse => {
+  // console.log(articlesResponse);
+  newsHolder = articlesResponse;
+  gotNews = true;
+  displayNews();
+
+
+
+
+  /*
+    {
+      status: "ok",
+      source: "associated-press",
+      sortBy: "top",
+      articles: [...]
+    }
+   */
+});
