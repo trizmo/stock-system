@@ -81,8 +81,8 @@ var https = require("https");
 
 let symUC = "";
 let currentP = "";
-let targetTop;
-let targetBottom;
+let targetTop = [];
+let targetBottom = [];
 let notAlert = true;
 let sym = "";
 let targetPrice = "";
@@ -133,16 +133,22 @@ $(document).ready(function () {
     console.log("Firebase Snapshot: ")
 
     newList = snapshot.val()
-    console.log(newList.alertList[0].symbol)
+    console.log(newList.alertList[6])
     $("#dataRows").empty();
-    for (i = 0; i < alertList.length; i++) {
+
+    for(let key in newList.alertList){
+      console.log(newList.alertList[key])
+    }
+
+
+    for(let key in newList.alertList){
       $("#dataRows").append($("<tr/>")
-        .append($("<th/>", { scope: "row", text: i + 1 }))
-        .append($("<td/>", { text: newList.alertList[i].symbol }))
-        .append($("<td/>", { text: newList.alertList[i].current }))
-        .append($("<td/>", { text: newList.alertList[i].targetDN }))
-        .append($("<td/>", { text: newList.alertList[i].targetUP }))
-        .append($("<td/>", { text: newList.alertList[i].type })))
+        .append($("<th/>", { scope: "row", text: 1 + 1 }))
+        .append($("<td/>", { text: newList.alertList[key].symbol }))
+        .append($("<td/>", { text: newList.alertList[key].current }))
+        .append($("<td/>", { text: newList.alertList[key].targetDN }))
+        .append($("<td/>", { text: newList.alertList[key].targetUP }))
+        .append($("<td/>", { text: newList.alertList[key].type })))
     }
   });
 
@@ -207,7 +213,7 @@ $(document).ready(function () {
       targetTop = 0;
     } else {
       targetTop = targetPrice;
-      targetBottom = 0;
+      targetBottom = 0
     }
 
     console.log(targetBottom)
@@ -231,8 +237,8 @@ $(document).ready(function () {
 
       database.ref("alertList").push({
         symbol: symUC,
-        targetUP: targetTop,
-        targetDN: targetBottom,
+        targetUP: [targetTop],
+        targetDN: [targetBottom],
         current: currentP,
         type: type,
         triggered: false
