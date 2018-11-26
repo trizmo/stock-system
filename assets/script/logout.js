@@ -9,7 +9,7 @@ $(document).ready(function () {
     messagingSenderId: "609139349737"
   }
 
-  firebase.initializeApp(config);
+  // firebase.initializeApp(config);
 
   $("#logOut").click(function (event) {
     firebase.auth().signOut();

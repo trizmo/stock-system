@@ -217,11 +217,6 @@ $(document).on("click", ".element-button", function () {
 
 
 
-
-
-
-
-
 })
 
 

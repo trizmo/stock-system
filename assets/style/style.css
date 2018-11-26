@@ -140,6 +140,10 @@ input.alertPriceInput {
 .crypto-alerts-table{
   width:100%;
 }
+.alertInput{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 
 

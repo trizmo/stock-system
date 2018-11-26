@@ -30,7 +30,7 @@ $(document).ready(function () {
     messagingSenderId: "609139349737"
   };
 
-  firebase.initializeApp(config);
+  // firebase.initializeApp(config);
   var database = firebase.database();
 
   // AJAX CALL: for updating current prices for in alertList
