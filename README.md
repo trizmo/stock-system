@@ -2,6 +2,7 @@
 ## By trizCA
 
 This app will pull and display market data
+[Link to site](https://trizmo.github.io/stock-system/index.html) 
 
 # Features
 ## Quick info
@@ -30,12 +31,6 @@ This project it not even being close to complete. There's still a lot more go to
 
 # Screenshot
 <img src="./assets/img/screenshot.jpg">
-
-
-
-
-
-
 
 
 
