@@ -1,6 +1,9 @@
 # Market Systems
 ## By trizCA
 
+This app is currently being rebuilt:
+https://github.com/trizmo/market-systems-v3
+
 This app will pull and display market data
 [Link to site](https://trizmo.github.io/stock-system/index.html) 
 
